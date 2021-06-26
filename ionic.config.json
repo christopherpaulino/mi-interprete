@@ -1,0 +1,7 @@
+{
+  "name": "mi-interprete",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
