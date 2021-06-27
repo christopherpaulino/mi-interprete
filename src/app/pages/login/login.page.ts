@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class LoginPage implements OnInit {
 
   constructor() { }
-
+  loginForm: FormsModule
   ngOnInit() {
   }
 
