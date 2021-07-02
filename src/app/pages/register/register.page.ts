@@ -1,30 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  selector: 'app-register',
+  templateUrl: './register.page.html',
+  styleUrls: ['./register.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class RegisterPage implements OnInit {
 
-  loginForm: FormGroup
+  registerForm: FormGroup
 
   constructor(
     private router: Router,
     public formBulder: FormBuilder
   ) { }
   ngOnInit() {
-    this.loginForm = this.formBulder.group({
+    this.registerForm = this.formBulder.group({
       username: [''],
       password: ['']
     })
   }
 
   onSubmit() {
-    this.loginForm.reset()
+    this.registerForm.reset()
     this.router.navigate(["/home"])
   }
-
 }

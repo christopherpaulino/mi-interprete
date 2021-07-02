@@ -1,0 +1,40 @@
+<ion-content>
+  <div>
+    <div class="register-header">
+      <img src="../../../assets/logo.png" alt="">
+      <h1>Mi Interprete</h1>
+    </div>
+  </div>
+  
+  <div class="register-form">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <ion-item>
+        <ion-label position="floating">Usuario</ion-label>
+        <ion-input   required formControlName="username" clearInput [clearOnEdit]="false" autocapitalize="off" inputmode="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Contraseña </ion-label>
+        <ion-input required formControlName="password" clearInput autocapitalize="off" type="password"></ion-input>
+      </ion-item>
+      <ion-button class="submit-button" block color="primary" type="submit" [disabled]="registerForm.invalid">
+        Iniciar Sesion
+      </ion-button>
+      <a href="">¿Olvidaste tu contraseña?</a>
+    </form>
+  </div>
+  
+  
+  
+  <div class="register-options">
+    <h5>Iniciar con:</h5>
+    <div class="register">
+    <button><img src="../../../assets/google.png" alt=""></button>
+    <button><img src="../../../assets/facebook.png" alt=""></button>
+  </div>
+  </div>
+  <div class="register-footer">
+    <h5>¿Ya tienes cuenta? <a [routerLink]="['/login']">Inicia Sesión</a></h5>
+  </div>
+  
+  </ion-content>
+  
