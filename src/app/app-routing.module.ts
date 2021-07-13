@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './shared/auth.guard';
+import { IsLoggedGuard } from './shared/is-logged.guard';
+import { ValidateEmailGuard } from './shared/validate-email.guard';
 
 const routes: Routes = [
   {
@@ -9,32 +12,27 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
+    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule),
+    canActivate: [IsLoggedGuard]
   },
   {
     path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
-  },
-  {
-    path: 'interpreter-list',
-    loadChildren: () => import('./pages/interpreter-list/interpreter-list.module').then( m => m.InterpreterListPageModule)
-  },
-  {
-    path: 'favs',
-    loadChildren: () => import('./pages/favs/favs.module').then( m => m.FavsPageModule)
-  },
-  {
-    path: 'messages',
-    loadChildren: () => import('./pages/messages/messages.module').then( m => m.MessagesPageModule)
-  },
-  {
-    path: 'events',
-    loadChildren: () => import('./pages/events/events.module').then( m => m.EventsPageModule)
+    loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'register',
-    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
-  }
+    loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterPageModule)
+  },
+  {
+    path: 'complete-register/:id',
+    loadChildren: () => import('./pages/complete-register/complete-register.module').then(m => m.CompleteRegisterPageModule)
+  },
+  {
+    path: 'email-validator',
+    loadChildren: () => import('./pages/email-validator/email-validator.module').then(m => m.EmailValidatorPageModule),
+    canActivate: [AuthGuard]
+  },
 ];
 
 @NgModule({

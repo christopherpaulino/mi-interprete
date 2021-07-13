@@ -4,17 +4,22 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { InterpreterListPageRoutingModule } from './interpreter-list-routing.module';
-
 import { InterpreterListPage } from './interpreter-list.page';
-import { RouterModule } from '@angular/router';
-
+import { RouterModule, Routes } from '@angular/router';
+import { ComponentsModule } from '../../components/components.module';
+const routes: Routes = [
+  {
+    path: '',
+    component: InterpreterListPage
+  }
+]
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    InterpreterListPageRoutingModule,
+    RouterModule.forChild(routes),
+    ComponentsModule
   ],
   declarations: [InterpreterListPage]
 })

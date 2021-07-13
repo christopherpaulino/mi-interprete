@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from 'src/app/shared/user.interface';
+import { AuthService } from '../../services/auth.service';
+import { UserInformation } from '../../shared/user.information.interface';
 
 @Component({
   selector: 'app-register',
@@ -13,17 +16,36 @@ export class RegisterPage implements OnInit {
 
   constructor(
     private router: Router,
-    public formBulder: FormBuilder
+    public formBulder: FormBuilder,
+    private authService: AuthService
   ) { }
   ngOnInit() {
+    console.log("register");
     this.registerForm = this.formBulder.group({
-      username: [''],
+      email: [''],
       password: ['']
     })
+    this.authService.checkEmailVerified()
   }
 
-  onSubmit() {
-    this.registerForm.reset()
-    this.router.navigate(["/home"])
+  async onSubmit() {
+    try {
+
+      if (this.registerForm.valid) {
+        const { email, password } = this.registerForm.getRawValue();
+        const user = await this.authService.register(email, password)
+
+        this.registerForm.reset()
+        if (user) {
+          this.router.navigate(['/email-validator'])
+          // this.router.navigate(['complete-register/', user.uid])
+          // this.authService.createUserData(user as UserInformation)
+        }
+
+      }
+    } catch (err) {
+      console.log(err);
+
+    }
   }
 }

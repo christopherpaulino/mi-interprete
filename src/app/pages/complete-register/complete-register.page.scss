@@ -1,0 +1,81 @@
+ion-content {
+  --background: #ffffff;
+  --keyboard-offset: 0px;
+  --offset-bottom: 0px;
+  --offset-top: 0px;
+  --margin-bottom: 2rem;
+  --padding-end: 2rem;
+  --padding-start: 2rem;
+  --margin-top: 2rem;
+  text-align: center;
+}
+
+
+
+.complete-register-header {
+  display: flex;
+  margin: 10px auto;
+  align-items: flex-end;
+  color: var(--ion-color-primary)
+}
+
+.complete-register-header h1 {
+  font-size: 36px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  vertical-align: middle;
+
+}
+
+.complete-register-header img {
+  width: 4rem;
+  height: 4rem;
+}
+
+.complete-register-input {
+  border: 1px #eaeaea solid;
+  background-color: #f6f6f6;
+
+}
+
+.submit-button {
+  display: block;
+  margin: 2rem 2rem 1rem 2rem;
+
+}
+
+.complete-register-form {
+  margin-top: 6rem;
+}
+
+.complete-register-form ion-item {
+  margin-top: 1rem;
+}
+
+.complete-register-form a {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  text-decoration: none !important;
+}
+
+.complete-register-footer {
+  position: absolute;
+  bottom: 2rem;
+}
+
+.complete-register-options {
+  margin-top: 2rem;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.complete-register-options-buttons {
+  display: flex;
+}
+
+.complete-register-options img {
+  width: 2rem;
+  height: 2rem;
+}

@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { FavsPageRoutingModule } from './favs-routing.module';
 
 import { FavsPage } from './favs.page';
+import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FavsPageRoutingModule
+    FavsPageRoutingModule,
+    ComponentsModule
   ],
   declarations: [FavsPage]
 })
-export class FavsPageModule {}
+export class FavsPageModule { }

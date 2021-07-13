@@ -27,17 +27,16 @@ const routes: Routes = [
         loadChildren: () => import('../events/events-routing.module').then(m => m.EventsPageRoutingModule)
       },
       {
+        path: 'profile',
+        loadChildren: () => import('../my-profile/my-profile.module').then(m => m.MyProfilePageModule)
+      },
+      {
         path: '',
         redirectTo: '/home/interpreters',
         pathMatch: 'full'
       }
     ],
   },
-  {
-    path: '',
-    redirectTo: '/home/interpreters',
-    pathMatch: 'full'
-  }
 ];
 
 @NgModule({

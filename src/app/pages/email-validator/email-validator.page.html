@@ -1,0 +1,32 @@
+
+  
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Iniciar Sesion" defaultHref="login"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <app-logo-header>
+
+  </app-logo-header>
+
+<ion-content>
+  <div class="m-5 d-flex justify-content-center">
+    <img src="../../../assets/email_validator.png" class="img-fluid" alt="">
+  </div>
+  <div class="mx-5 text-center">
+    <h5>Hemos enviado un email de verificación al correo:</h5>
+    <h5 class="email">{{user ? user.email:""}}</h5>
+    <br>
+    <h5>¿No encuentras el codigo de verificación?</h5>
+    <ion-button (click)="resendVerificationCode()" expand="block" fill="clear" shape="round">
+      Reenviar codígo
+    </ion-button>
+  </div>
+
+  <ion-button (click)="validate()" class="mx-3 mb-5 fixed-bottom" expand="block" >
+    Validar
+  </ion-button>
+  
+
+</ion-content>

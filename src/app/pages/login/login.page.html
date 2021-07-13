@@ -1,9 +1,8 @@
 <ion-content>
 <div>
-  <div class="login-header">
-    <img src="../../../assets/logo.png" alt="">
-    <h1>Mi Interprete</h1>
-  </div>
+ <app-logo-header>
+   
+ </app-logo-header>
 </div>
 
 <div class="login-form">
@@ -28,8 +27,12 @@
 <div class="login-options">
   <h5>Iniciar con:</h5>
   <div class="login">
-  <button><img src="../../../assets/google.png" alt=""></button>
-  <button><img src="../../../assets/facebook.png" alt=""></button>
+<ion-button (click)="loginGoogle()" fill="clear" shape="round">
+  <img src="../../../assets/google.png" alt="">
+</ion-button>
+<ion-button fill="clear" shape="clear" >
+  <img src="../../../assets/facebook.png" alt="">
+</ion-button>
 </div>
 </div>
 <div class="login-footer">

@@ -1,22 +1,9 @@
 <ion-header>
+  <app-home-toolbar title="Interpretes" [router]="router">
+  </app-home-toolbar>
+</ion-header>
 
-  <ion-toolbar>
-    <ion-buttons slot="secondary">
-      <ion-button>
-        <ion-icon slot="icon-only" name="person-circle"></ion-icon>
-      </ion-button>
-      <ion-button>
-        <ion-icon slot="icon-only" name="search"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-buttons slot="primary">
-      <ion-button >
-        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-title>Default Buttons</ion-title>
-  </ion-toolbar>
-
+<ion-content>
   <ion-toolbar>
     <ion-segment value="all">
       <ion-segment-button value="all">
@@ -25,17 +12,17 @@
       <ion-segment-button value="availables">
         Disponibles
       </ion-segment-button>
-      <ion-segment-button value="nearest">
-        Cercanos
-      </ion-segment-button>
       <ion-segment-button value="experts">
         Expertos
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
-  
-</ion-header>
-
-<ion-content>
-<h1>Interpretes</h1>
+<ion-list>
+  <div >
+    <app-interpreter-list-item 
+    *ngFor="let interpreter of interpreters"
+    [interpreter] = "interpreter">
+    </app-interpreter-list-item>
+  </div>
+</ion-list>
 </ion-content>

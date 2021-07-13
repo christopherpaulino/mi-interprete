@@ -1,3 +1,51 @@
-<p>
-  interpreter-list-item works!
-</p>
+<ion-card class="m-1">
+
+<ion-item >
+    <ion-avatar>
+      <img [src]="interpreter.photoUrl" alt="">
+    </ion-avatar>
+
+      <ion-label>
+        <ion-grid fixed>
+          <ion-row>
+            <ion-col size="11">
+              <h2><b>{{interpreter.name}}</b></h2>
+            </ion-col>
+            <ion-col size="1">
+
+              <div *ngIf="interpreter.connected; else disconnected">
+                <ion-icon name="ellipse-sharp" color="success"></ion-icon>
+              </div>
+
+              <ng-template #disconnected>
+                <ion-icon name="ellipse-sharp" color="danger"></ion-icon>
+              </ng-template>
+
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col size="12">
+              <h3><ion-icon slot="start" name="location-outline"></ion-icon> {{interpreter.city}}</h3>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col size="9">
+              <h3><ion-icon slot="start" name="bookmark-outline"></ion-icon> {{getRateDescription()}}</h3>
+            </ion-col>
+            <ion-col size="3" class="ion-align-self-end">
+              <h3>
+                <ion-icon slot="start" name="star-sharp"></ion-icon> 
+                {{interpreter.review}} / 5
+              </h3>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        
+        
+      
+      </ion-label>
+</ion-item>
+  
+</ion-card>
