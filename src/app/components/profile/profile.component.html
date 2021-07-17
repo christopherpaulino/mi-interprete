@@ -4,11 +4,11 @@
 <ion-card class="m-2" >
 
   <div class="header" style="background-color: whitesmoke;">
-      <img [src]="getUser().photoUrl"  />
+      <img [src]="getUser() && getUser().photoUrl? getUser().photoUrl : 'assets/avatar.png'"  />
   </div>
 
   <ion-card-content class="center ">
-    <ion-card-header>
+    <ion-card-header class="p-0">
       <ion-card-title class="m-1">{{getUser().fullName}}</ion-card-title>
       
     </ion-card-header>

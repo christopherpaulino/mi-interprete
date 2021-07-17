@@ -61,34 +61,38 @@ export class EmailValidatorPage implements OnInit {
     )
   }
 
-  async validate() {
+  validate() {
     try {
-      const isVerified = await this.authService.checkEmailVerified()
-      if (isVerified) {
-        this.router.navigate(['/home'])
-      } else {
-        const alert = await this.alertController.create(
-          {
-            message: "Ingrese a su correo y haga click en el enlace de verificación.",
-            header: "Correo no verificado",
-            buttons: [
+      this.authService.checkEmailVerified().then(
+        async (isVerified) => {
+          if (isVerified) {
+            this.router.navigate(['/home'])
+          } else {
+            const alert = await this.alertController.create(
               {
-                text: "Reintentar",
-                handler: () => {
-                  this.authService.checkEmailVerified()
-                  this.loadUser()
-                }
-              },
-              {
-                text: "Aceptar",
-                role: "cancel"
+                message: "Ingrese a su correo y haga click en el enlace de verificación.",
+                header: "Correo no verificado",
+                buttons: [
+                  {
+                    text: "Reintentar",
+                    handler: () => {
+                      this.authService.checkEmailVerified()
+                      this.loadUser()
+                    }
+                  },
+                  {
+                    text: "Aceptar",
+                    role: "cancel"
+                  }
+                ]
               }
-            ]
+            )
+            await alert.present()
           }
-        )
-        await alert.present()
-      }
+        }
+      )
     } catch (err) {
+      console.log(err);
 
     }
   }

@@ -36,8 +36,8 @@ export class AuthService {
         if (authUser) {
           await this.afs.collection('users').doc<User>(authUser.uid).valueChanges().pipe(take(1)).subscribe(
             res => {
-              this.updateEmailValidate(res.uid, res.emailVerified)
-              resolve(res.emailVerified)
+              this.updateEmailValidate(res.uid, authUser.emailVerified)
+              resolve(authUser.emailVerified)
             }, err => {
               reject(err)
             }
@@ -121,12 +121,13 @@ export class AuthService {
       email: user.email,
       emailVerified: user.emailVerified,
       displayName: user.displayName,
-      firstLogin: true
+      firstLogin: true,
+      isInterpreter: false
     };
     await this.afs.collection('users').doc(user.uid).set(data)
   }
 
-  updateUserData(user: User, id?: string) {
+  updateUserData(user: User, id?: string, completed?: boolean) {
     return new Promise<void>(async (resolve, reject) => {
       try {
         if (id) { user.uid = id }
@@ -135,16 +136,15 @@ export class AuthService {
         if (user.displayName) {
           data.displayName = user.displayName
         }
-        data.firstLogin = false
+        if (completed) {
+          data.firstLogin = false
+        }
 
         this.afs.collection('users').doc(user.uid).update(data).then(
           () => {
             resolve()
           }
         )
-
-
-
       } catch (error) {
         reject(error)
       }

@@ -26,6 +26,10 @@ export class InterpreterProfilePage implements OnInit {
     )
   }
 
+  contact() {
+
+  }
+
   ngOnInit() {
   }
 

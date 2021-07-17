@@ -10,7 +10,16 @@
   
   <div class="complete-register-form">
     <form [formGroup]="completeRegisterForm" (ngSubmit)="onSubmit()">
-
+      <ion-row>
+        <ion-col>
+          <img [src]="user && user.photoUrl? user.photoUrl : 'assets/avatar.png'">
+        </ion-col>
+        <ion-col size="12">
+          <ion-button (click)="photoService.addNewToGallery()" expand="block" fill="clear" shape="round">
+            Cambiar foto
+          </ion-button>
+        </ion-col>
+      </ion-row>
       <ion-item>
         <ion-label position="floating">Nombre Completo</ion-label>
         <ion-input required formControlName="fullName" [clearOnEdit]="false" autocapitalize="off" inputmode="text"></ion-input>
@@ -20,10 +29,16 @@
         <ion-label>Fecha de Nacimiento</ion-label>
         <ion-datetime displayFormat="DD/MMM/YYYY" formControlName="dateBirth" placeholder="Selecciona Fecha"></ion-datetime>
       </ion-item>
-
+      <ion-item>
+        <ion-label>Sexo</ion-label>
+        <ion-select formControlName="gender">
+          <ion-select-option *ngFor="let gender of genders" 
+          [value]="gender">{{gender}}</ion-select-option>
+        </ion-select>
+      </ion-item>
       <ion-item>
         <ion-label>Ciudad</ion-label>
-        <ion-select formControlName="city">
+        <ion-select formControlName="city" required>
           <ion-select-option *ngFor="let city of cities" 
           [value]="city.name">{{city.name}}</ion-select-option>
         </ion-select>

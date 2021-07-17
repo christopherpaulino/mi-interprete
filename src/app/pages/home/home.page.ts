@@ -19,7 +19,7 @@ export class HomePage implements OnInit {
           if (!res.emailVerified) {
             this.router.navigate(['/email-validator'])
           } else if (res.firstLogin) {
-            this.router.navigate(['/complete-register'])
+            this.router.navigate(['/complete-register', res.uid])
           }
         }
       }

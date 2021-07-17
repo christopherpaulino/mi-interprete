@@ -6,7 +6,8 @@ import { AuthService } from '../../services/auth.service';
 import { UserInformation } from '../../shared/user.information.interface';
 import { CitiesService } from '../../services/cities.service';
 import { City } from '../../shared/city.interface';
-import { element } from 'protractor';
+import { genders } from '../../shared/user.interface';
+import { PhotoService } from '../../services/photo.service';
 
 @Component({
   selector: 'app-complete-register',
@@ -19,6 +20,7 @@ export class CompleteRegisterPage implements OnInit {
   id: any
   cities: City[]
   user: User
+  genders = genders
 
 
   constructor(
@@ -26,7 +28,8 @@ export class CompleteRegisterPage implements OnInit {
     public formBulder: FormBuilder,
     private authService: AuthService,
     private activatedRoute: ActivatedRoute,
-    private cityService: CitiesService
+    private cityService: CitiesService,
+    public photoService: PhotoService
   ) {
 
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
@@ -36,12 +39,7 @@ export class CompleteRegisterPage implements OnInit {
           this.user = res
           this.loadCities()
 
-          this.completeRegisterForm = this.formBulder.group({
-            fullName: [res['fullName']],
-            phone: [res['phone']],
-            dateBirth: [res['dateBirth']],
-            city: [res['city']]
-          })
+          this.completeRegisterForm.patchValue(res)
         }
       }
     )
@@ -52,7 +50,8 @@ export class CompleteRegisterPage implements OnInit {
       fullName: [''],
       phone: [''],
       city: [''],
-      dateBirth: ['']
+      dateBirth: [''],
+      gender: ['']
     })
     this.loadCities()
   }
@@ -78,7 +77,7 @@ export class CompleteRegisterPage implements OnInit {
     try {
 
       if (this.completeRegisterForm.valid) {
-        this.authService.updateUserData(this.completeRegisterForm.getRawValue(), this.user.uid).then(
+        this.authService.updateUserData(this.completeRegisterForm.getRawValue(), this.user.uid, true).then(
           () => {
             this.router.navigate(['/home/interpreters'])
           }
