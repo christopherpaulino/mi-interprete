@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class HomeToolbarComponent implements OnInit {
 
-  @Input() title: any
+  @Input() title: any;
   @Input() router: Router
   constructor() { }
 

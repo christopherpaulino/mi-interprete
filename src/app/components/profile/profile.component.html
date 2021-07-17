@@ -1,0 +1,41 @@
+<div>
+
+</div>
+<ion-card class="m-2" >
+
+  <div class="header" style="background-color: whitesmoke;">
+      <img [src]="getUser().photoUrl"  />
+  </div>
+
+  <ion-card-content class="center ">
+    <ion-card-header>
+      <ion-card-title class="m-1">{{getUser().fullName}}</ion-card-title>
+      
+    </ion-card-header>
+    <ion-grid fixed>
+
+      <ion-row>
+        <ion-col size="12">
+          <h2><ion-icon slot="start" name="mail"></ion-icon>
+            {{getUser().email}}</h2>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+         <h2> <ion-icon slot="start" name="call"></ion-icon> {{getUser().phone}}</h2>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <h2> <ion-icon slot="start" name="bookmark"></ion-icon> {{getUser().city}}</h2>
+        </ion-col>
+      </ion-row>
+       
+      
+    </ion-grid>
+  </ion-card-content>
+
+  
+</ion-card>

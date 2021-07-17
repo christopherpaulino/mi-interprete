@@ -18,7 +18,6 @@ export class CompleteRegisterPage implements OnInit {
   completeRegisterForm: FormGroup
   id: any
   cities: City[]
-  actualCity: City
   user: User
 
 
@@ -36,6 +35,7 @@ export class CompleteRegisterPage implements OnInit {
         if (res) {
           this.user = res
           this.loadCities()
+
           this.completeRegisterForm = this.formBulder.group({
             fullName: [res['fullName']],
             phone: [res['phone']],
@@ -71,16 +71,6 @@ export class CompleteRegisterPage implements OnInit {
       })
     }
     )
-    if (this.user.city) {
-      this.cityService.getCityById(this.user.city).subscribe(
-        res => {
-          console.log(this.user.city);
-          this.actualCity = res as City
-        }
-      )
-    } else {
-      this.actualCity = this.cities[0]
-    }
 
   }
 
@@ -88,9 +78,13 @@ export class CompleteRegisterPage implements OnInit {
     try {
 
       if (this.completeRegisterForm.valid) {
-        this.authService.updateUserData(this.completeRegisterForm.getRawValue(), this.user.uid)
+        this.authService.updateUserData(this.completeRegisterForm.getRawValue(), this.user.uid).then(
+          () => {
+            this.router.navigate(['/home/interpreters'])
+          }
+        )
 
-        this.router.navigate(['/home/profile'])
+
       }
     } catch (err) {
       console.log(err);

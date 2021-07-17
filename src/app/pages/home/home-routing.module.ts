@@ -31,6 +31,11 @@ const routes: Routes = [
         loadChildren: () => import('../my-profile/my-profile.module').then(m => m.MyProfilePageModule)
       },
       {
+        path: 'interpreter/profile/:id',
+        loadChildren: () => import("../interpreter-profile/interpreter-profile.module").then(m => m.InterpreterProfilePageModule)
+      },
+
+      {
         path: '',
         redirectTo: '/home/interpreters',
         pathMatch: 'full'

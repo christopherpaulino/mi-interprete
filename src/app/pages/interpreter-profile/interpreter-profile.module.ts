@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { MyProfilePageRoutingModule } from './my-profile-routing.module';
+import { InterpreterProfilePageRoutingModule } from './interpreter-profile-routing.module';
 
-import { MyProfilePage } from './my-profile.page';
+import { InterpreterProfilePage } from './interpreter-profile.page';
 import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
@@ -14,9 +14,9 @@ import { ComponentsModule } from '../../components/components.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    MyProfilePageRoutingModule,
+    InterpreterProfilePageRoutingModule,
     ComponentsModule
   ],
-  declarations: [MyProfilePage]
+  declarations: [InterpreterProfilePage]
 })
-export class MyProfilePageModule { }
+export class InterpreterProfilePageModule { }

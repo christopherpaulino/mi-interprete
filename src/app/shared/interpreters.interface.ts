@@ -1,10 +1,9 @@
+import { User } from './user.interface';
 export class Interpreter {
-    $key: String;
-    name: String;
-    last_name: String;
-    photoUrl: String;
-    review: number;
-    telefono: String;
-    city: String;
-    connected: boolean;
+    $key: string;
+    worksDone?: number;
+    review?: number;
+    connected?: boolean;
+    user_id?: string;
+    user?: User;
 }

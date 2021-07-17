@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Interpreter } from 'src/app/shared/interpreters.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-interpreter-list-item',
@@ -8,12 +9,17 @@ import { Interpreter } from 'src/app/shared/interpreters.interface';
 })
 export class InterpreterListItemComponent implements OnInit {
 
-  @Input() interpreter: Interpreter
+  @Input() interpreter: Interpreter;
+  @Output() clickItem = new EventEmitter();
 
-  constructor() { }
+
+  constructor(public router: Router) { }
 
   ngOnInit() { }
 
+  onClick() {
+    this.router.navigate(['home/interpreter/profile', this.interpreter.$key])
+  }
 
   getRateDescription(): String {
     const rate = this.interpreter.review

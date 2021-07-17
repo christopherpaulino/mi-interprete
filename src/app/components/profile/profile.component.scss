@@ -1,0 +1,14 @@
+.header {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.header img {
+  display: block;
+  height: 10rem;
+  width: 10rem !important;
+  border-radius: 50%;
+}

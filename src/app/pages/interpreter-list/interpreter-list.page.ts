@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Interpreter } from 'src/app/shared/interpreters.interface';
 import { InterpreterService } from '../../services/interpreter.service';
 import { Router } from '@angular/router';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-interpreter-list',
@@ -18,15 +19,18 @@ export class InterpreterListPage implements OnInit {
 
   ngOnInit() {
 
-    this.interpreterService.getInterpreterList().subscribe(res => {
-      this.interpreters = res.map(t => {
-        console.log(res)
-        return {
-          $key: t.payload.doc.id,
-          ...t.payload.doc.data() as Interpreter
-        }
-      })
-    })
+    this.interpreterService.getInterpreterList().then(
+      res => {
+        if (res && res.length > 0)
+          console.log(res);
+
+        this.interpreters = res
+      }
+    )
+  }
+
+  goToProfile(id: string) {
+    this.router.navigate(['/home/interpreter/profile', id])
   }
 
 }

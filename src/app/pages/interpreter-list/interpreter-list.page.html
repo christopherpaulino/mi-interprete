@@ -21,7 +21,7 @@
   <div >
     <app-interpreter-list-item 
     *ngFor="let interpreter of interpreters"
-    [interpreter] = "interpreter">
+    [interpreter] = "interpreter" (clickItem)="goToProfile($event)">
     </app-interpreter-list-item>
   </div>
 </ion-list>

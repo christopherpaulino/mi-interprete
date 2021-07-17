@@ -127,17 +127,29 @@ export class AuthService {
   }
 
   updateUserData(user: User, id?: string) {
-    console.log("updateUser");
-    if (id) { user.uid = id }
-    const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
+    return new Promise<void>(async (resolve, reject) => {
+      try {
+        if (id) { user.uid = id }
+        const data: User = user
 
-    const data: User = user
+        if (user.displayName) {
+          data.displayName = user.displayName
+        }
+        data.firstLogin = false
 
-    if (user.displayName) {
-      data.displayName = user.displayName
-    }
+        this.afs.collection('users').doc(user.uid).update(data).then(
+          () => {
+            resolve()
+          }
+        )
 
-    return userRef.set(data, { merge: true });
+
+
+      } catch (error) {
+        reject(error)
+      }
+    })
+
   }
 
 

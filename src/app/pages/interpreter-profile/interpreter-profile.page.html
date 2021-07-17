@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" text="Salir"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="dataLoaded">
+    <app-profile  [isInterpreter]="true" [interpreter]="interpreter">
+
+    </app-profile>
+  </div>
+
+</ion-content>

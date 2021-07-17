@@ -12,16 +12,22 @@ export class HomePage implements OnInit {
   constructor(
     private authService: AuthService,
     public router: Router
-  ) { }
-
-  ngOnInit() {
+  ) {
     this.authService.user$.subscribe(
       res => {
-        if (res && !res.emailVerified) {
-          this.router.navigate(['/email-validator'])
+        if (res) {
+          if (!res.emailVerified) {
+            this.router.navigate(['/email-validator'])
+          } else if (res.firstLogin) {
+            this.router.navigate(['/complete-register'])
+          }
         }
       }
     )
+  }
+
+  ngOnInit() {
+
   }
 
   printSelected(ev) {

@@ -8,59 +8,25 @@
 </ion-header>
 
 <ion-content>
-<div *ngIf="isDataLoaded; else loading">
-  <ion-card class="m-2" >
+<div *ngIf="isDataLoaded;">
+  <app-profile [user]="user">
 
-    <div class="header" style="background-color: whitesmoke;">
-        <img src="https://www.dmarge.com/wp-content/uploads/2021/01/dwayne-the-rock-.jpg"  />
-    </div>
-
-    <ion-card-content class="center ">
-      <ion-card-header>
-        <ion-card-title class="m-1">{{user.fullName}}</ion-card-title>
-        
-      </ion-card-header>
-      <ion-grid fixed>
-
-        <ion-row>
-          <ion-col size="12">
-            <h2><ion-icon slot="start" name="mail"></ion-icon>
-              {{user.email.toLocaleLowerCase()}}</h2>
-          </ion-col>
-        </ion-row>
-
-        <ion-row>
-          <ion-col size="12">
-           <h2> <ion-icon slot="start" name="call"></ion-icon> {{user.phone}}</h2>
-          </ion-col>
-        </ion-row>
-
-        <ion-row>
-          <ion-col size="12">
-            <h2> <ion-icon slot="start" name="bookmark"></ion-icon> {{user.city}}</h2>
-          </ion-col>
-        </ion-row>
-         
-        
-      </ion-grid>
-    </ion-card-content>
-
-    <ion-grid fixed>
-      <ion-row>
-        <ion-col size="6">
-          <ion-button (click)="editProfile()" color="primary" fill="outline"  expand="block">
-            <ion-icon slot="start" name="create"></ion-icon> Editar
-          </ion-button>
-        </ion-col>
-        <ion-col size="6">
-          <ion-button (click)="logout()" color="danger" fill="outline" expand="block">
-            <ion-icon slot="start" name="log-out"></ion-icon> Cerrar Sesion
-          </ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-card>
-  <ng-template #loading>
+  </app-profile>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button (click)="editProfile()" color="primary" fill="outline"  expand="block">
+          <ion-icon slot="start" name="create"></ion-icon> Editar
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button (click)="logout()" color="danger" fill="outline" expand="block">
+          <ion-icon slot="start" name="log-out"></ion-icon> Cerrar Sesion
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ng-template *ngIf="!isDataLoaded">
     <ion-spinner name="crescent">Cargando</ion-spinner>
   </ng-template>
 </div>
