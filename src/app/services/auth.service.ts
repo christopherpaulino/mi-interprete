@@ -18,7 +18,6 @@ export class AuthService {
     private afs: AngularFirestore) {
     this.user$ = this.firebaseAuth.authState.pipe(
       switchMap((user) => {
-        console.log("load User");
         if (user) {
           //this.updateEmailValidate(user.uid, user.emailVerified)
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
@@ -67,7 +66,6 @@ export class AuthService {
   }
 
   async register(email: string, password: string): Promise<User> {
-    console.log("Register");
     try {
       const { user } = await (await this.firebaseAuth.createUserWithEmailAndPassword(email, password));
       await this.createUserData(user)
@@ -79,7 +77,6 @@ export class AuthService {
   }
 
   login(pEmail: string, password: string) {
-    console.log("login");
     return new Promise<User>(async (resolve, reject) => {
       try {
         const { user } = await this.firebaseAuth.signInWithEmailAndPassword(pEmail, password);
@@ -97,7 +94,6 @@ export class AuthService {
   }
 
   async sendVerifcationEmail(): Promise<void> {
-    console.log("Send Email");
     try {
       return (await this.firebaseAuth.currentUser).sendEmailVerification();
     } catch (error) {
@@ -114,7 +110,6 @@ export class AuthService {
   }
 
   async createUserData(user: User) {
-    console.log("createUSer");
     const data: User = {
       uid: user.uid,
       email: user.email,

@@ -21,9 +21,7 @@ export class InterpreterListPage implements OnInit {
     this.interpreterService.getInterpreterList().then(
       res => {
         if (res && res.length > 0)
-          console.log(res);
-
-        this.interpreters = res
+          this.interpreters = res
       }
     )
   }

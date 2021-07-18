@@ -85,7 +85,7 @@ export class PhotoService {
         var ref = this.firebaseStorage.ref(refPath)
         this.firebaseStorage.upload(refPath, savedFile).snapshotChanges().pipe(
             finalize(() => {
-                console.log(ref.getDownloadURL());
+
 
             })
         )

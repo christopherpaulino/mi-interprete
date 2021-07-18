@@ -31,7 +31,6 @@ export class HomePage implements OnInit {
   }
 
   printSelected(ev) {
-    console.log(ev);
 
   }
 

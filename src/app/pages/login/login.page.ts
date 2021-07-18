@@ -22,7 +22,6 @@ export class LoginPage implements OnInit {
     public alertController: AlertController
   ) { }
   ngOnInit() {
-    console.log("Login");
 
     this.loginForm = this.formBulder.group({
       username: [''],
@@ -35,7 +34,6 @@ export class LoginPage implements OnInit {
       const { username, password } = this.loginForm.getRawValue()
       try {
         const user = await this.authService.login(username, password)
-        console.log(user)
         if (user) {
           this.router.navigate(['/home'])
         }

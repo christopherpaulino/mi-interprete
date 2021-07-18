@@ -82,7 +82,6 @@ export class CompleteRegisterPage implements OnInit {
 
       }
     } catch (err) {
-      console.log(err);
 
     }
   }

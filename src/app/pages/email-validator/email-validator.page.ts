@@ -46,7 +46,6 @@ export class EmailValidatorPage implements OnInit {
   loadUser() {
     this.authService.user$.pipe(take(1)).subscribe(
       res => {
-        console.log(res)
         if (res) {
           this.user = res
 
@@ -92,7 +91,6 @@ export class EmailValidatorPage implements OnInit {
         }
       )
     } catch (err) {
-      console.log(err);
 
     }
   }

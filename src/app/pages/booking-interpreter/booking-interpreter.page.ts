@@ -54,7 +54,6 @@ export class BookingInterpreterPage implements OnInit {
     booking.interpreter_id = this.id
 
     if (this.bookingForm.valid) {
-      console.log(booking);
 
       this.bookingService.postBooking(booking).then(
         res => this.router.navigate(['/home/messages'])

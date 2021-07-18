@@ -19,7 +19,6 @@ export class RegisterPage implements OnInit {
     private authService: AuthService
   ) { }
   ngOnInit() {
-    console.log("register");
     this.registerForm = this.formBulder.group({
       email: [''],
       password: ['']
@@ -37,8 +36,6 @@ export class RegisterPage implements OnInit {
         this.registerForm.reset()
         if (user) {
           this.router.navigate(['/email-validator'])
-          // this.router.navigate(['complete-register/', user.uid])
-          // this.authService.createUserData(user as UserInformation)
         }
 
       }
