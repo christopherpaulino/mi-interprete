@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InterpreterService } from '../../services/interpreter.service';
-import { ActivatedRoute, Route } from '@angular/router';
-import { Interpreter } from '../../shared/interpreters.interface';
+import { ActivatedRoute, Route, Router } from '@angular/router';
+import { Interpreter } from '../../shared/interfaces';
 
 @Component({
   selector: 'app-interpreter-profile',
@@ -15,7 +15,7 @@ export class InterpreterProfilePage implements OnInit {
   dataLoaded: boolean = false
 
   constructor(private interpreterService: InterpreterService,
-    route: ActivatedRoute) {
+    public route: ActivatedRoute, public router: Router) {
     this.id = route.snapshot.params.id
     this.interpreterService.getInterpreterById(this.id).then(
       res => {
@@ -25,11 +25,6 @@ export class InterpreterProfilePage implements OnInit {
       }
     )
   }
-
-  contact() {
-
-  }
-
   ngOnInit() {
   }
 

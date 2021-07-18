@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { InterpreterListPage } from './interpreter-list.page';
 import { RouterModule, Routes } from '@angular/router';
 import { ComponentsModule } from '../../components/components.module';
-import { InterpreterProfilePage } from '../interpreter-profile/interpreter-profile.page';
 const routes: Routes = [
   {
     path: '',

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Interpreter } from 'src/app/shared/interpreters.interface';
+import { Interpreter } from 'src/app/shared/interfaces';
 import { InterpreterService } from '../../services/interpreter.service';
 import { Router } from '@angular/router';
-import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-interpreter-list',

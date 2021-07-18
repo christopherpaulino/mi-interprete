@@ -1,9 +1,33 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>messages</ion-title>
-  </ion-toolbar>
+  <app-home-toolbar title="Servicios contratados" [router]="router">
+  </app-home-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-toolbar>
+    <ion-segment value="pending">
+      <ion-segment-button value="pending">
+        Pendientes
+      </ion-segment-button>
+      <ion-segment-button value="accepted">
+        Aceptadas
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 
+  <div *ngIf="hasData;else empty">
+    <app-booking-list-item 
+    *ngFor="let booking of bookings"
+    [booking] = "booking" >
+ 
+   </app-booking-list-item>
+  </div>
+ 
+  <ng-template  class="position-relative" #empty>
+<div class="position-absolute top-50 start-50 translate-middle">
+  <h2>Lista vacia</h2>
+</div>
+    
+  </ng-template>
+    
 </ion-content>

@@ -15,16 +15,12 @@ const routes: Routes = [
         loadChildren: () => import('../interpreter-list/interpreter-list.module').then(m => m.InterpreterListPageModule)
       },
       {
-        path: 'favs',
-        loadChildren: () => import('../favs/favs-routing.module').then(m => m.FavsPageRoutingModule)
-      },
-      {
         path: 'messages',
-        loadChildren: () => import('../messages/messages-routing.module').then(m => m.MessagesPageRoutingModule)
+        loadChildren: () => import('../messages/messages.module').then(m => m.MessagesPageModule)
       },
       {
         path: 'events',
-        loadChildren: () => import('../events/events-routing.module').then(m => m.EventsPageRoutingModule)
+        loadChildren: () => import('../events/events.module').then(m => m.EventsPageModule)
       },
       {
         path: 'profile',

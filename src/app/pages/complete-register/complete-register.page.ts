@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from 'src/app/shared/user.interface';
+import { User, City, GENDERS } from 'src/app/shared/interfaces';
 import { AuthService } from '../../services/auth.service';
-import { UserInformation } from '../../shared/user.information.interface';
 import { CitiesService } from '../../services/cities.service';
-import { City } from '../../shared/city.interface';
-import { genders } from '../../shared/user.interface';
 import { PhotoService } from '../../services/photo.service';
 
 @Component({
@@ -20,7 +17,7 @@ export class CompleteRegisterPage implements OnInit {
   id: any
   cities: City[]
   user: User
-  genders = genders
+  genders = GENDERS
 
 
   constructor(
@@ -70,7 +67,6 @@ export class CompleteRegisterPage implements OnInit {
       })
     }
     )
-
   }
 
   async onSubmit() {

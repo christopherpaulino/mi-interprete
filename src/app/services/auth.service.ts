@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import { User } from '../shared/user.interface';
+import { User } from '../shared/interfaces';
 import { AngularFireAuth } from '@angular/fire/auth';
 
 import firebase from 'firebase/app';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable, of } from 'rxjs';
 import { switchMap, take, takeUntil } from 'rxjs/operators';
-import { UserInformation } from '../shared/user.information.interface';
 import { authError } from '../shared/utils/firebase.errors';
 import { error } from '@angular/compiler/src/util';
 @Injectable({

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Interpreter } from 'src/app/shared/interpreters.interface';
+import { Interpreter } from 'src/app/shared/interfaces';
 import { Router } from '@angular/router';
 
 @Component({

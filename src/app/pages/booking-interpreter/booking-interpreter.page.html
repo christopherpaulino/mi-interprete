@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/home/interpreters" text="Cancelar"></ion-back-button>
+      </ion-buttons>
+    <ion-title>Solicitar Servicio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<form [formGroup]="bookingForm" (ngSubmit)="postBooking()">
+  <ion-item>
+    <ion-label position="floating">Titulo <ion-text color="danger">*</ion-text></ion-label>
+    <ion-input required formControlName="title" type="text"></ion-input>
+  </ion-item>
+  <br>
+  <ion-item>
+    <ion-label>Fecha de Servicio</ion-label>
+    <ion-datetime formControlName="date" display-format="DD/MMM/YYYY"></ion-datetime>
+  </ion-item>
+  <br>
+  <ion-item>
+    <ion-label>Hora de Servicio</ion-label>
+    <ion-datetime formControlName="hour" displayFormat="h:mm A" minuteValues="0,15,30,45"></ion-datetime>
+  </ion-item>
+  <br>
+
+  <ion-item>
+    <ion-label>Ciudad</ion-label>
+    <ion-select formControlName="city" required>
+      <ion-select-option *ngFor="let city of cities" 
+      [value]="city.name">{{city.name}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <br>
+  <ion-item>
+    <ion-label position="floating">Descripción <ion-text color="danger">*</ion-text></ion-label>
+    <ion-textarea required formControlName="description" type="text"></ion-textarea>
+  </ion-item>
+
+  <ion-button class="submit-button" block color="primary" type="submit"  [disabled]="bookingForm.invalid">
+    Enviar
+  </ion-button>
+</form>
+</ion-content>

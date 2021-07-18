@@ -19,12 +19,22 @@
       Iniciar Sesion
     </ion-button>
     <a href="">¿Olvidaste tu contraseña?</a>
-    <ion-button class="submit-button" block color="danger" fill="solid">
-      <ion-icon (click)="loginGoogle()" name="logo-google"></ion-icon>Iniciar con Google
-    </ion-button>
   </form>
 </div>
 
+
+
+<div class="login-options">
+  <h5>Iniciar con:</h5>
+  <div class="login">
+<ion-button (click)="loginGoogle()" fill="clear" shape="round">
+  <img src="../../../assets/google.png" alt="">
+</ion-button>
+<ion-button fill="clear" shape="clear" >
+  <img src="../../../assets/facebook.png" alt="">
+</ion-button>
+</div>
+</div>
 <div class="login-footer">
   <h5>¿Aún no tienes cuenta? <a [routerLink]="['/register']">Registrate</a></h5>
 </div>

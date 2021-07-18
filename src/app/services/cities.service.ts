@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { error } from '@angular/compiler/src/util';
-import { City } from '../shared/city.interface';
+import { City } from '../shared/interfaces';
 
 @Injectable({
   providedIn: 'root'

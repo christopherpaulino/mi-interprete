@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { User } from '../../shared/user.interface';
-import { Interpreter } from '../../shared/interpreters.interface';
+import { User, Interpreter } from '../../shared/interfaces';
 import { element } from 'protractor';
 
 @Component({

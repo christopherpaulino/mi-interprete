@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/shared/user.interface';
+import { User } from 'src/app/shared/interfaces';
 import { AuthService } from '../../services/auth.service';
 import { map, take } from 'rxjs/operators';
 import { Router } from '@angular/router';
