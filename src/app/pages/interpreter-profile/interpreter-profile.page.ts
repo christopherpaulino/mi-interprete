@@ -17,11 +17,11 @@ export class InterpreterProfilePage implements OnInit {
   constructor(private interpreterService: InterpreterService,
     public route: ActivatedRoute, public router: Router) {
     this.id = route.snapshot.params.id
+
     this.interpreterService.getInterpreterById(this.id).then(
       res => {
         this.interpreter = res
         this.dataLoaded = true
-        console.log(this.interpreter);
       }
     )
   }

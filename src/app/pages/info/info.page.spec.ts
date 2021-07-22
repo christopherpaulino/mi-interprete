@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { SingleInputComponent } from './single-input.component';
+import { InfoPage } from './info.page';
 
-describe('SingleInputComponent', () => {
-  let component: SingleInputComponent;
-  let fixture: ComponentFixture<SingleInputComponent>;
+describe('InfoPage', () => {
+  let component: InfoPage;
+  let fixture: ComponentFixture<InfoPage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ SingleInputComponent ],
+      declarations: [ InfoPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SingleInputComponent);
+    fixture = TestBed.createComponent(InfoPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

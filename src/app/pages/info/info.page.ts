@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-favs',
-  templateUrl: './favs.page.html',
-  styleUrls: ['./favs.page.scss'],
+  selector: 'app-info',
+  templateUrl: './info.page.html',
+  styleUrls: ['./info.page.scss'],
 })
-export class FavsPage implements OnInit {
+export class InfoPage implements OnInit {
 
   constructor(public router: Router) { }
 

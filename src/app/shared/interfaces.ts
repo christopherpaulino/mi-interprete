@@ -3,7 +3,7 @@ export interface City {
     name: string
 }
 
-export class Interpreter {
+export interface Interpreter {
     $key: string;
     worksDone?: number;
     review?: number;
@@ -38,6 +38,11 @@ export interface Booking {
     city?: string;
     user?: User;
     interpreter?: Interpreter;
+}
+
+export interface Languages {
+    $key: string;
+    name: string;
 }
 
 export const GENDERS: string[] = [

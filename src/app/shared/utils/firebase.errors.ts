@@ -25,18 +25,6 @@ export function authError(error: string): string {
         case "auth/invalid-email": {
             return "Email no valido"
         }
-        case "": {
-            return ""
-        }
-        case "": {
-            return ""
-        }
-        case "": {
-            return ""
-        }
-        case "": {
-            return ""
-        }
         default: {
             return "Error desconocido"
         }

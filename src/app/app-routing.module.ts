@@ -22,7 +22,8 @@ const routes: Routes = [
   },
   {
     path: 'register',
-    loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterPageModule)
+    loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterPageModule),
+    canActivate: [IsLoggedGuard]
   },
   {
     path: 'complete-register/:id',
@@ -32,6 +33,10 @@ const routes: Routes = [
     path: 'email-validator',
     loadChildren: () => import('./pages/email-validator/email-validator.module').then(m => m.EmailValidatorPageModule),
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'info',
+    loadChildren: () => import('./pages/info/info.module').then(m => m.InfoPageModule)
   },
 ];
 

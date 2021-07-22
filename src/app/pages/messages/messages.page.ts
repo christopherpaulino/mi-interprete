@@ -27,10 +27,9 @@ export class MessagesPage implements OnInit {
         if (res && res.length > 0) {
           this.hasData = true
           this.bookings = res
-          console.log(res);
-
         }
       }
-    )
+    ).catch(
+      error => console.log(error))
   }
 }
