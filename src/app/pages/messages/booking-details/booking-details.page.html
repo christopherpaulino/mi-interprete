@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button text="Atras" defaultHref='/home/messages'></ion-back-button>
+      </ion-buttons>
+    <ion-title>Detalle del servicio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<ion-card class="m-1" *ngIf="hasLoaded">
+
+  <ion-list-header>
+    <ion-label class="my-0" mode="ios">Detalles del Interprete</ion-label>
+  </ion-list-header>
+  <ion-item>
+    <ion-label>
+      <ion-grid class="px-0" fixed>
+        <ion-row>
+          <ion-col size="2">
+            <ion-avatar>
+              <img [src]="interpreter.user.photoUrl" />
+            </ion-avatar>
+           </ion-col>
+          <ion-col size="10" class="d-flex align-items-center" >
+            <h1 class="align-middle"><b>{{interpreter.user.fullName}}</b></h1>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="12">
+            <a href="tel:{{interpreter.user.phone}}" style="text-decoration: none;"><ion-icon slot="start" name="call"></ion-icon> {{interpreter.user.phone}}</a>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <a style="text-decoration: none;" href='mailto:{{interpreter.user.email}}'><ion-icon slot="start" name="mail"></ion-icon> {{interpreter.user.email}}</a>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4">
+            <h2><ion-icon slot="start" name="bookmark"></ion-icon> {{interpreter.review |rate}}</h2>
+          </ion-col>
+          <ion-col size="4">
+            <h2><ion-icon slot="start" name="star"></ion-icon> {{interpreter.review}} / 5</h2>
+          </ion-col>
+          <ion-col size="4">
+            <h2><ion-icon name="checkmark-circle"></ion-icon> {{interpreter.worksDone}}</h2>
+          </ion-col>
+        </ion-row>
+        <button>Ir a perfil</button>
+
+<!--         
+        <ion-row>
+          <ion-col size="6">
+            <h3><ion-icon slot="start" name="location"></ion-icon> {{booking.city}}</h3>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          
+          <ion-col size="6" class="ion-align-self-end">
+            <h3>
+              <ion-icon slot="start" name="calendar"></ion-icon> 
+              {{booking.date |date}}
+            </h3>
+          </ion-col>
+          <ion-col size="6">
+            <h3>
+              <ion-icon slot="start" name="time"></ion-icon> 
+              {{booking.hour | date:'shortTime' }}
+            </h3>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+
+            <div *ngIf="booking.status; else disconnected">
+              <h3><ion-icon name="ellipse-sharp" color="success"></ion-icon> Aceptada</h3>
+            </div>
+
+            <ng-template #disconnected>
+              <h3><ion-icon name="ellipse-sharp" color="danger"></ion-icon> Pendiente de Aceptar</h3>
+            </ng-template>
+
+          </ion-col>
+        </ion-row> -->
+        
+      </ion-grid>
+    </ion-label>
+</ion-item>
+</ion-card>
+
+</ion-content>

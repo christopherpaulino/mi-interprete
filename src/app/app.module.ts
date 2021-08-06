@@ -13,6 +13,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth'
 import { AngularFirestoreModule } from '@angular/fire/firestore'
 import { AngularFireStorageModule } from '@angular/fire/storage'
 import { ComponentsModule } from './components/components.module';
+import { RatePipe } from './shared/pipe/rate.pipe';
+import { PipeModule } from './shared/pipe/pipe.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,7 +27,8 @@ import { ComponentsModule } from './components/components.module';
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
-    ComponentsModule
+    ComponentsModule,
+    PipeModule
 
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

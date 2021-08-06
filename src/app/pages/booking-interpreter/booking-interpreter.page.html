@@ -34,7 +34,23 @@
   </ion-item>
   <br>
   <ion-item>
-    <ion-label position="floating">Descripción <ion-text color="danger">*</ion-text></ion-label>
+    <ion-label>Traducir de:</ion-label>
+    <ion-select formControlName="languageFrom" required>
+      <ion-select-option *ngFor="let language of languages" 
+      [value]="language">{{language}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <br>
+  <ion-item>
+    <ion-label>A:</ion-label>
+    <ion-select formControlName="languageTo" required>
+      <ion-select-option *ngFor="let language of languages" 
+      [value]="language">{{language}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <br>
+  <ion-item>
+    <ion-label position="floating">Descripción Adicional<ion-text color="danger">*</ion-text></ion-label>
     <ion-textarea required formControlName="description" type="text"></ion-textarea>
   </ion-item>
 

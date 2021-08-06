@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Booking } from '../../shared/interfaces';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-booking-list-item',
@@ -9,8 +10,13 @@ import { Booking } from '../../shared/interfaces';
 export class BookingListItemComponent implements OnInit {
 
   @Input() booking: Booking;
-  constructor() { }
+
+  constructor(public router: Router) { }
 
   ngOnInit() { }
+
+  onClick() {
+    this.router.navigate(['home/messages/details', this.booking.$key])
+  }
 
 }

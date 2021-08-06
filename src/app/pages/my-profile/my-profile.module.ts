@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -8,6 +8,7 @@ import { MyProfilePageRoutingModule } from './my-profile-routing.module';
 
 import { MyProfilePage } from './my-profile.page';
 import { ComponentsModule } from '../../components/components.module';
+import { BecomeInterpreterComponent } from './become-interpreter/become-interpreter.component';
 
 @NgModule({
   imports: [
@@ -15,8 +16,9 @@ import { ComponentsModule } from '../../components/components.module';
     FormsModule,
     IonicModule,
     MyProfilePageRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    ReactiveFormsModule
   ],
-  declarations: [MyProfilePage]
+  declarations: [MyProfilePage, BecomeInterpreterComponent]
 })
 export class MyProfilePageModule { }

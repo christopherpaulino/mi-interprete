@@ -1,47 +1,94 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, QuerySnapshot } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 import { error } from '@angular/compiler/src/util';
 import { Interpreter, User } from '../shared/interfaces';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InterpreterService {
 
-  intepreters: Interpreter[] = []
+
   constructor(
     private db: AngularFirestore,
     private router: Router,
     private authServicer: AuthService
   ) { }
 
-  getInterpreterList() {
-    return new Promise<Interpreter[]>((resolve, reject) => {
+  registerInterpreter(interpreter: Interpreter) {
+    return new Promise<boolean>(async (resolve, reject) => {
       try {
+        let userFromDB: User = await this.authServicer.getMyUser()
 
-        this.db.collection('interpreter').snapshotChanges().subscribe(
+        interpreter.user_id = userFromDB.uid,
+          interpreter.user = userFromDB
+        userFromDB.isInterpreter = true
+        await this.authServicer.updateUserData(userFromDB)
+
+        interpreter.connected = true;
+        interpreter.review = 0
+        interpreter.worksDone = 0
+
+        this.db.collection('interpreter').doc(userFromDB.uid).set(interpreter).then(
           res => {
-            this.intepreters = res.map(t => {
-              const interpreter: Interpreter = {
-                $key: t.payload.doc.id,
-                ...t.payload.doc.data() as Interpreter
-              }
+            resolve(true)
+          }
+        )
+      } catch (error) {
+        reject(error)
+      }
 
-              const item = t.payload.doc.data()
+    })
+  }
+
+  getInterpreterList(filter?: string) {
+    let intepreters: Interpreter[] = []
+    return new Promise<Interpreter[]>(async (resolve, reject) => {
+
+      try {
+        let userFromDB: User = await this.authServicer.getMyUser()
+        const collection = this.db.collection('interpreter').ref
+
+        let query: Promise<QuerySnapshot<any>>
+        switch (filter) {
+          case "availables":
+            query = collection.where("connected", "==", true).get()
+            break;
+
+          case "experts":
+            query = collection.where("review", ">=", 4).get()
+            break;
+
+          case "all":
+            query = collection.get()
+            break;
+
+          default:
+            query = collection.get()
+            break;
+        }
+        query.then(
+          res => {
+            res.forEach(t => {
+              const interpreter: Interpreter = {
+                $key: t.id,
+                ...t.data() as Interpreter
+              }
+              const item = t.data()
 
               this.authServicer.getUserById(item['user_id']).subscribe(
                 (user) => {
                   const userData: User = { uid: user['uid'], ...user as User }
                   interpreter.user = userData
-
                 }
               )
-              return interpreter
+              intepreters.push(interpreter)
             }
             )
-            resolve(this.intepreters)
+            resolve(intepreters.filter(i => (i.user_id != userFromDB.uid)))
           })
       } catch (error) {
         reject(error)
@@ -64,8 +111,7 @@ export class InterpreterService {
                 interpreter.user = userData
 
                 resolve(interpreter)
-              }
-            )
+              })
           }
         )
       } catch (error) {
@@ -74,3 +120,5 @@ export class InterpreterService {
     })
   }
 }
+
+

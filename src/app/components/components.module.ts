@@ -6,6 +6,8 @@ import { InterpreterListItemComponent } from './interpreter-list-item/interprete
 import { LogoHeaderComponent } from './logo-header/logo-header.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BookingListItemComponent } from './booking-list-item/booking-list-item.component';
+import { RatePipe } from '../shared/pipe/rate.pipe';
+import { PipeModule } from '../shared/pipe/pipe.module';
 
 const components = [
   HomeToolbarComponent,
@@ -20,7 +22,7 @@ const components = [
   exports: components,
   imports: [
     CommonModule,
-    IonicModule
+    IonicModule, PipeModule
   ]
 })
 export class ComponentsModule { }

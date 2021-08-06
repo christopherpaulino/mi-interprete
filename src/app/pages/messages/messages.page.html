@@ -5,7 +5,7 @@
 
 <ion-content>
   <ion-toolbar>
-    <ion-segment value="pending">
+    <ion-segment #list [ngModel]="selectedList" (ngModelChange)="change($event)">
       <ion-segment-button value="pending">
         Pendientes
       </ion-segment-button>
@@ -16,11 +16,15 @@
   </ion-toolbar>
 
   <div *ngIf="hasData;else empty">
+    <div  
+    *ngFor="let booking of bookings">
     <app-booking-list-item 
-    *ngFor="let booking of bookings"
+    *ngIf="booking.interpreter"
     [booking] = "booking" >
  
    </app-booking-list-item>
+    </div>
+    
   </div>
  
   <ng-template  class="position-relative" #empty>

@@ -5,7 +5,7 @@
 
 <ion-content>
   <ion-toolbar>
-    <ion-segment value="all">
+    <ion-segment [value]="selectedItem" [ngModel]="selectedItem" (ngModelChange)="onTabChange($event)" >
       <ion-segment-button value="all">
         Todos
       </ion-segment-button>
@@ -17,12 +17,23 @@
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
-<ion-list>
+  <ion-searchbar placeholder="Buscar por nombre, ciudad o idioma" inputmode="decimal" type="decimal" (ionChange)="onSearchChange($event)" [debounce]="250" showCancelButton="focus" cancelButtonText="Cancelar" (ionCancel)="cancelFilter()">
+
+  </ion-searchbar>
+<ion-list *ngIf="filteredList?.length > 0; else empty">
   <div >
     <app-interpreter-list-item 
-    *ngFor="let interpreter of interpreters"
-    [interpreter] = "interpreter" (clickItem)="goToProfile($event)">
+    *ngFor="let interpreter of filteredList"
+    [interpreter] = "interpreter">
     </app-interpreter-list-item>
   </div>
 </ion-list>
+<ng-template class="position-relative" #empty>
+  <div #empty_container class="position-absolute top-50 start-50 translate-middle">
+      <img class="row center-block mx-auto my-1" style="max-width: 60%;" src="../../../assets/empty.png"/>
+      <ion-list-header class="p-0">
+        <ion-label class="text-center">Lista Vacía</ion-label>
+      </ion-list-header>
+    </div>
+</ng-template>
 </ion-content>

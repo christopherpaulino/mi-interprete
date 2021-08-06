@@ -5,11 +5,13 @@ export interface City {
 
 export interface Interpreter {
     $key: string;
+    aboutMe: string;
     worksDone?: number;
     review?: number;
     connected?: boolean;
     user_id?: string;
     user?: User;
+    languages?: string[];
 }
 
 export interface User {
@@ -28,6 +30,7 @@ export interface User {
 }
 
 export interface Booking {
+    $key: string;
     user_id?: string;
     interpreter_id?: string;
     title?: string;
@@ -38,11 +41,23 @@ export interface Booking {
     city?: string;
     user?: User;
     interpreter?: Interpreter;
+    languageFrom?: string;
+    languageTo?: string;
 }
 
-export interface Languages {
+export interface Language {
     $key: string;
     name: string;
+}
+
+export interface Slides {
+    $key: string;
+    screen: string;
+    position: number;
+    title: string;
+    description?: string;
+    imageUrl?: string;
+    footer?: string;
 }
 
 export const GENDERS: string[] = [

@@ -13,6 +13,16 @@
 
   </app-profile>
   <ion-grid fixed>
+    <div *ngIf="!user.isInterpreter">
+      <ion-row>
+        <ion-col size="12">
+          <ion-button class="mx-4" [routerLink]="['become-interpreter']" expand="block"  >
+            Quiero ser interprete
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+    
     <ion-row>
       <ion-col size="6">
         <ion-button (click)="editProfile()" color="primary" fill="outline"  expand="block">

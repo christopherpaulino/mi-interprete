@@ -40,8 +40,17 @@ ion-content {
 .login-footer {
   padding: 0 !important;
   position: absolute;
+  bottom: 5rem;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+}
+
+.login-footer-link {
+  padding: 0 !important;
+  position: absolute;
   bottom: 2rem;
-  width: 100%;
+  width: 90%;
   display: flex;
   justify-content: center;
 }

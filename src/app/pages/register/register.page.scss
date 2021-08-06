@@ -55,10 +55,24 @@ ion-content {
   text-decoration: none !important;
 }
 
-.register-footer {
+.login-footer {
+  padding: 0 !important;
+  position: absolute;
+  bottom: 5rem;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+}
+
+.login-footer-link {
+  padding: 0 !important;
   position: absolute;
   bottom: 2rem;
+  width: 90%;
+  display: flex;
+  justify-content: center;
 }
+
 
 .register-options {
   margin-top: 2rem;

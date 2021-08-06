@@ -8,8 +8,10 @@ import { Booking } from '../../shared/interfaces';
   templateUrl: './messages.page.html',
   styleUrls: ['./messages.page.scss'],
 })
+
 export class MessagesPage implements OnInit {
 
+  selectedList: string = "pending"
   bookings: Booking[] = []
   hasData: boolean = false
 
@@ -21,8 +23,15 @@ export class MessagesPage implements OnInit {
   ngOnInit() {
   }
 
+  change($event) {
+    this.selectedList = $event
+    this.loadBookings()
+  }
   loadBookings() {
-    this.bookingsService.getMyBookings().then(
+    this.bookings = []
+    let status = this.selectedList == "accepted";
+
+    this.bookingsService.getMyBookings(status).then(
       res => {
         if (res && res.length > 0) {
           this.hasData = true

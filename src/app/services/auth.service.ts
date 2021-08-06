@@ -5,7 +5,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import firebase from 'firebase/app';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable, of } from 'rxjs';
-import { switchMap, take, takeUntil } from 'rxjs/operators';
+import { first, switchMap, take, takeUntil } from 'rxjs/operators';
 import { authError } from '../shared/utils/firebase.errors';
 import { error } from '@angular/compiler/src/util';
 @Injectable({
@@ -58,7 +58,7 @@ export class AuthService {
   async loginGoogle(): Promise<User> {
     try {
       const { user } = await this.firebaseAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-      this.updateUserData(user);
+      this.updateUserData(user as User);
       return user;
     } catch (error) {
       console.log('Error->', authError(error.code));
@@ -128,7 +128,7 @@ export class AuthService {
         const data: User = user
 
         if (user.displayName) {
-          data.displayName = user.displayName
+          data.fullName = user.displayName
         }
         if (completed) {
           data.firstLogin = false
@@ -160,5 +160,18 @@ export class AuthService {
 
   getUserById(id: string) {
     return this.afs.collection('users').doc(id).valueChanges()
+  }
+
+  getMyUser() {
+    return new Promise<User>((resolve, reject) => {
+      try {
+        this.user$.pipe(first()).subscribe(
+          res => resolve(res)
+        )
+      } catch (error) {
+        console.log(error);
+
+      }
+    })
   }
 }
