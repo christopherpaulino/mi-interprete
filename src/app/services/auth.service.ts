@@ -158,6 +158,17 @@ export class AuthService {
     return userRef.set(data, { merge: true });
   }
 
+  updateUserPhoto(uid: string, url: string) {
+    const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${uid}`);
+
+    const data: User = {
+      uid: uid,
+      photoUrl: url
+    };
+
+    return userRef.set(data, { merge: true });
+  }
+
   getUserById(id: string) {
     return this.afs.collection('users').doc(id).valueChanges()
   }

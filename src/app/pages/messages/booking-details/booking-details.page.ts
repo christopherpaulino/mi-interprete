@@ -42,9 +42,8 @@ export class BookingDetailsPage implements OnInit {
   }
 
   sendByWhatsapp() {
-    const message = "Hola que tal"
-    window.open("https://www.w3schools.com/php/", '_system', 'location=yes');
-    this.router.navigateByUrl(`wa.me/${this.interpreter.user.phone}?text=${message}`)
+    const message = `Hola ${this.interpreter.user.displayName} que tal, te hablo desde Mi Interprete`
+    window.open(`https://api.whatsapp.com/send?phone=${this.interpreter.user.phone}?text=${message}`, '_system', 'location=yes');
   }
   loadInterpreter() {
     this.interpreterService.getInterpreterById(this.booking.interpreter_id).then(
