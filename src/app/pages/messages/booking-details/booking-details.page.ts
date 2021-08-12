@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BookingService } from '../../../services/booking.service';
 import { Booking, Interpreter } from '../../../shared/interfaces';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { InterpreterService } from '../../../services/interpreter.service';
 
@@ -20,7 +20,8 @@ export class BookingDetailsPage implements OnInit {
   bookingForm: FormGroup
   constructor(private bookingService: BookingService,
     private interpreterService: InterpreterService,
-    private route: ActivatedRoute, private formBuilder: FormBuilder) {
+    private route: ActivatedRoute, private formBuilder: FormBuilder,
+    private router: Router) {
     this.id = this.route.snapshot.params.id
     this.bookingForm = this.formBuilder.group([
 
@@ -39,6 +40,12 @@ export class BookingDetailsPage implements OnInit {
       }
     )
   }
+
+  sendByWhatsapp() {
+    const message = "Hola que tal"
+    window.open("https://www.w3schools.com/php/", '_system', 'location=yes');
+    this.router.navigateByUrl(`wa.me/${this.interpreter.user.phone}?text=${message}`)
+  }
   loadInterpreter() {
     this.interpreterService.getInterpreterById(this.booking.interpreter_id).then(
       res => {
@@ -48,5 +55,8 @@ export class BookingDetailsPage implements OnInit {
     )
   }
 
+  goToProfile() {
+    this.router.navigate([`/home/interpreter/profile/${this.interpreter.$key}`])
+  }
 
 }
