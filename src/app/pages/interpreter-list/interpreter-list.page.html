@@ -17,7 +17,7 @@
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
-  <ion-searchbar placeholder="Buscar por nombre, ciudad o idioma" inputmode="decimal" type="decimal" (ionChange)="onSearchChange($event)" [debounce]="250" showCancelButton="focus" cancelButtonText="Cancelar" (ionCancel)="cancelFilter()">
+  <ion-searchbar placeholder="Buscar por nombre, ciudad o idioma" inputmode="text" (ionChange)="onSearchChange($event)" [debounce]="250" showCancelButton="focus" cancelButtonText="Cancelar" (ionCancel)="cancelFilter()">
 
   </ion-searchbar>
 <ion-list *ngIf="filteredList?.length > 0; else empty">
