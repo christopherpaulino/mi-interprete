@@ -11,21 +11,19 @@
   <div *ngIf="dataLoaded">
     <app-profile  [isInterpreter]="true" [interpreter]="interpreter">
     </app-profile>
-    <ion-button class="mx-4" [routerLink]="['contact']" expand="block"  >
-      Contactar
-    </ion-button>
-
     <ion-row class="mx-4">
       <ion-col size="6">
-        <ion-button class="" expand="block" fill="outline" >
-          Comentarios
+        <ion-button class="" [routerLink]="['comments']" expand="block" fill="outline" >
+          Reseñas
         </ion-button>
       </ion-col>
       <ion-col size="6">
-        <ion-button class=""  expand="block"  fill="outline" >
-          Certificados
-        </ion-button>
-      </ion-col>
+    <ion-button class="" [routerLink]="['contact']" expand="block"  >
+      Contactar
+    </ion-button>
+  </ion-col>
+   
+      
     </ion-row>
   </div>
 

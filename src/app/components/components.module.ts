@@ -8,13 +8,16 @@ import { ProfileComponent } from './profile/profile.component';
 import { BookingListItemComponent } from './booking-list-item/booking-list-item.component';
 import { RatePipe } from '../shared/pipe/rate.pipe';
 import { PipeModule } from '../shared/pipe/pipe.module';
+import { CommentItemComponent } from './comment-item/comment-item.component';
+import { IonicRatingModule } from "ionic4-rating";
 
 const components = [
   HomeToolbarComponent,
   InterpreterListItemComponent,
   LogoHeaderComponent,
   ProfileComponent,
-  BookingListItemComponent
+  BookingListItemComponent,
+  CommentItemComponent
 ]
 
 @NgModule({
@@ -22,7 +25,8 @@ const components = [
   exports: components,
   imports: [
     CommonModule,
-    IonicModule, PipeModule
+    IonicModule, PipeModule,
+    IonicRatingModule
   ]
 })
 export class ComponentsModule { }

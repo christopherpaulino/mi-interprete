@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Atras"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Reseñas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-list *ngIf="comments ;else empty">
+  <app-comment-item *ngFor="let comment of comments"
+  [comment]="comment">
+
+  </app-comment-item>
+</ion-list>
+
+<ng-template  class="position-relative" #empty>
+  <div #empty_container class="position-absolute top-50 start-50 translate-middle">
+    <img class="row center-block mx-auto my-1" style="max-width: 60%;" src="../../../assets/empty.png"/>
+    <ion-list-header class="p-0">
+      <ion-label class="text-center">Lista Vacía</ion-label>
+    </ion-list-header>
+  </div>
+    </ng-template>
+      
+</ion-content>

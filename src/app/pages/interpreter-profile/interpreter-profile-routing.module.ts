@@ -13,6 +13,11 @@ const routes: Routes = [
     path: 'contact',
     loadChildren: () => import('../booking-interpreter/booking-interpreter.module').then(m => m.BookingInterpreterPageModule)
   },
+
+  {
+    path: 'comments',
+    loadChildren: () => import('../interpreter-comments/interpreter-comments.module').then(m => m.InterpreterCommentsPageModule)
+  },
 ];
 
 @NgModule({

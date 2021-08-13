@@ -50,6 +50,13 @@ export interface Language {
     name: string;
 }
 
+export interface Comments {
+    user: string,
+    description: string,
+    interpreter: string,
+    rating: number
+}
+
 export interface Slides {
     $key: string;
     screen: string;
